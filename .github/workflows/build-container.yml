@@ -44,12 +44,10 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          # FIXED: Select the alpine variant build context target file from the fork
           file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          # FIXED: Explicitly pass the upstream parameters to build the LDAP modules!
           build-args: |
             BUILD_DEPENDENCIES=openldap-dev
             RUN_DEPENDENCIES=openldap
